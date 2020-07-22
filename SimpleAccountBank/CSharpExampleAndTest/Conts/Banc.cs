@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleAccountBank.Enum;
+using System;
 
 namespace SimpleAccountBank.Conts
 {
@@ -7,16 +8,18 @@ namespace SimpleAccountBank.Conts
         public string Name { get; set; }
         public int Agency { get; set; }
         public int Account { get; set; }
-
+        public int Digit { get; set; }
+        public Enum_TypeAccount TypeAccount { get; set; }
         public Users Users = new Users();
 
-        public Banc(string name, int agency, int account, DateTime dateTime, int id, int cpf, string nameAccount, DateTime birthDate)
+        public Banc(Enum_TypeAccount typeAccount, string name, int agency, int account, int digit, DateTime dateTime, int id, int cpf, string nameAccount, DateTime birthDate)
         {
             Users.DateTime = dateTime;
             Users.Id = id;
             Users.Cpf = cpf;
             Users.Name = nameAccount;
             Users.BirthDate = birthDate;
+            TypeAccount = typeAccount;
             Name = name;
             Agency = agency;
             Account = account;
@@ -24,17 +27,13 @@ namespace SimpleAccountBank.Conts
         public override string ToString()
         {
             return Users.DateTime
-                + " Agency: "
+                + Name
                 + Agency
-                + " Account: "
                 + Account
-                +" Id: "
+                + Digit
                 + Users.Id
-                +" Client: "
                 + Users.Name
-                + " CPF: "
                 + Users.Cpf
-                + " Birth Datte"
                 + Users.BirthDate.ToString();
         }
     }
